@@ -4,9 +4,9 @@ ROCm is an extension of  HSA platform architecture, so it shares the queueing mo
 
 The full list of HSA system architecture platform requirements is here: [HSA Sys Arch Features](http://www.hsafoundation.com/html/HSA_Library.htm#SysArch/Topics/01_Overview/list_of_requirements.htm)
 
-The ROCm Platform uses the new PCI Express 3.0 (PCIe 3.0)  features for Atomic Read-Modify-Write Transactions which extends inter-processor synchronization mechanisms to IO to support the defined set of HSA capbilities needed for queuing and signaling memory operations. 
+The ROCm Platform uses the new PCI Express 3.0 (PCIe 3.0)  features for Atomic Read-Modify-Write Transactions which extends inter-processor synchronization mechanisms to IO to support the defined set of HSA capabilities needed for queuing and signaling memory operations. 
 
-The new PCIe AtomicOps operate as completers for CAS(Compare and Swap), FetchADD, SWAP atomics. The AtomicsOps are initiated by the I/O device which support 32-, 64- and 128-bit operand which target address have to be naturally aligned to operation sizes.  
+The new PCIe AtomicOps operate as completers for CAS(Compare and Swap), FetchADD, SWAP atomics. The AtomicsOps are initiated by the I/O devices which support 32-, 64- and 128-bit operand which target address have to be naturally aligned to operation sizes.  
 
 Currently ROCm use this capability as following:
 
@@ -15,7 +15,7 @@ Currently ROCm use this capability as following:
 - Update HSA Signals – 64bit atomic ops are used for CPU & GPU synchronization.
 
 The PCIe 3.0 AtomicOp feature allows atomic transactions to be requested by, routed through and completed by PCIe components. Routing and completion does not require software support. Component support for each is detectable via
-the DEVCAP2 register. Upstream bridges need to have AtomicOp routing enabled or the Atomic Operations will fall even though PCIe endpoint and PCIe I/O Devices has the capability to Atomics Operations. 
+the DEVCAP2 register. Upstream bridges need to have AtomicOp routing enabled or the Atomic Operations will fail even though PCIe endpoints and PCIe I/O Devices have the capability to support Atomic Operations. 
 
 To do AtomicOp routing capability between two or more Root Ports, each associated Root Port must indicate that capability via the AtomicOp Routing Supported bit in the Device Capabilities 2 register.
 
@@ -68,7 +68,7 @@ In SuperMicro system in the system bios you need to see the following
  
 - Advanced->PCIe/PCI/PnP Configuration->MMIO High Size = 256G
  
-When we support Large Bar Capbility there is a  Large Bar Vbios which also disable the IO bar.  
+When we support Large Bar Capability there is a  Large Bar Vbios which also disable the IO bar.  
 
 
 For GFX9 and Vega10 which have Physical Address up 44 bit and 48 bit Virtual address.
